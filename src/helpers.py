@@ -1,6 +1,8 @@
 
-
+import json
 # [3] Coletando os dados para a chamada no dynamoDB
+
+
 def get_headers(event, context):
 
     value = {
@@ -33,8 +35,12 @@ def send_to_sqs(lista_final):
 # [8] Tratando resposta final para casos especificos
 def format_response(response):
 
-    value = {
-        "fallback": "valor"
+    response_output = {
+        "statusCode": 200,
+        "headers": "",
+        "body": json.dumps(
+            response
+        ),
     }
 
-    return response
+    return response_output

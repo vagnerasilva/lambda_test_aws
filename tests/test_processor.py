@@ -1,12 +1,36 @@
+import os
 from src.processor import lambda_processor
 from src.processor import get_list_dynamodb
 from src.processor import process_list_dynamodb
+from aws_lambda_powertools.utilities.validation import validate
+import sys
+import json
+from tests.events.schemas import INPUT_SCHEMA
+sys.path.append('./tests/events')
+
+# Mock do arquivo de event
+
+
+def load_sample_event_from_file(test_event_file_name: str) -> dict:
+    """
+    Loads and validate test events from the file system
+    """
+
+    current_directory = os.getcwd()
+    print(current_directory)
+    event_file_name = f"./tests/events/{test_event_file_name}.json"
+    with open(event_file_name, "r", encoding='UTF-8') as file_handle:
+        event = json.load(file_handle)
+        validate(event=event, schema=INPUT_SCHEMA)
+        return event
 
 
 # [2] Processando evento de entrada
 # [2.A] Teste lambda processor com erro
+
+
 def test_lambda_processor_error():
-    mock_event = ""
+    mock_event = load_sample_event_from_file("sampleEvent1")
     mock_context = ""
     response = lambda_processor(mock_event, mock_context)
 
