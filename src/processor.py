@@ -30,7 +30,7 @@ def lambda_processor(event, context):
         # [8] Tratando resposta final para casos especificos
         response_output = format_response(response)
         return response_output
-    except:
+    except KeyError:
         print("An exception occurred")
         response = "ERRO "
         # [8] Tratando resposta final para casos especificos

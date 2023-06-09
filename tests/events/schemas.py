@@ -13,7 +13,7 @@ INPUT_SCHEMA = {
     "description": "The Document generation path parameters, Document Type and Customer ID.",
     "required": ["pathParameters"],
     "properties": {
-        "pathParameters" : { 
+        "pathParameters": {
             "$id": "#/properties/pathParameters",
             "type": "object",
             "required": ["docType", "customerId"],
@@ -22,14 +22,14 @@ INPUT_SCHEMA = {
                     "$id": "#/properties/pathParameters/docType",
                     "type": "string",
                     "title": "The Document Type to Generate",
-                    "examples": ["TestDoc","WELCOME"],
+                    "examples": ["TestDoc", "WELCOME"],
                     "maxLength": 30,
-                    },
+                },
                 "customerId": {
                     "$id": "#/properties/pathParameters/customerId",
                     "type": "string",
                     "title": "The Customer ID to send the document",
-                    "examples": ["TestCustomer","TestCustomer01"],
+                    "examples": ["TestCustomer", "TestCustomer01"],
                     "maxLength": 30,
                 }
             }
